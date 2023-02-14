@@ -22,3 +22,17 @@ button {
   padding: 8px 12px;
   cursor: pointer;
 }
+
+/* for task 3 */
+.gallery_modified {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  gap: 10px;
+}
+.gallery_modified li {
+  display: flex;
+}
+.gallery_modified img {
+  width: 100%;
+}

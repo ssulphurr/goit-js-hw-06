@@ -15,35 +15,18 @@ function getRandomHexColor() {
 const boxesDivEl = document.querySelector("#boxes")
 const inputEl = document.querySelector("#controls").firstElementChild;
 
-/////////////////////////////// ПИТЯННЯ 
+let amount = 0;
 
-// let amount;
+inputEl.addEventListener("input", (event) => {
+  amount = event.target.value;
+})
 
-// inputEl.addEventListener("input", (event) => {
-//   amount = event.currentTarget.value;
-//   console.log(amount);
 
-//   return amount; <- не працює
-// })
-
-// Вище написаний код, з якого 
-// я хотіла достати змінну anount і покласти її як параметр createBoxes(),
-// але, на жаль, не розібралась, як вивести з addEventListener amount
-// (прочитала на форумі, що це колбек, і він не повертає значення)
-
-// Чи могли б Ви, будь ласка, підказати, як потрібно було зробити,
-// щоб amount був зовнішньою змінною й параметром createBoxes(),
-// а не створювався всередині неї? Дякую
-
-/////////////////////////////// КІНЕЦЬ ПИТАННЯ
-
-function createBoxes() {
-  const amount = inputEl.value;
-
+function createBoxes(quantity) {
   const array = [];
   let a = 30;
 
-  for (let i = 0; i < amount; i += 1) {
+  for (let i = 0; i < quantity; i += 1) {
     const box = document.createElement("div");
     box.style.width = a + "px";
     box.style.height = a + "px";
@@ -70,6 +53,6 @@ function destroyBoxes() {
 const btnCreateEl = document.querySelector("[data-create]");
 const btnDestroyEl = document.querySelector("[data-destroy]");
 
-btnCreateEl.addEventListener("click", createBoxes);
+btnCreateEl.addEventListener("click", () => createBoxes(amount));
 
 btnDestroyEl.addEventListener("click", destroyBoxes)
